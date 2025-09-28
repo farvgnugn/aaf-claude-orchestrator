@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model projects {
+  id                   Int       @id @default(autoincrement())
+  public_id            String    @unique
+  name                 String
+  repo_provider        String?
+  repo_url             String?
+  repo_default_branch  String    @default("main")
+  workspace_root       String?
+  repo_ready           Boolean   @default(false)
+  epics                epics[]
+}
+
+model epics {
+  id         Int       @id @default(autoincrement())
+  public_id  String    @unique
+  project_id Int
+  project    projects  @relation(fields: [project_id], references: [id], onDelete: Cascade)
+  title      String
+  status     String    @default("OPEN")
+  stories    user_stories[]
+}
+
+model user_stories {
+  id                Int      @id @default(autoincrement())
+  public_id         String   @unique
+  epic_id           Int
+  epic              epics    @relation(fields: [epic_id], references: [id], onDelete: Cascade)
+  title             String
+  status            String   @default("DRAFT")
+  size              String?
+  risk              String?
+  dependencies_met  Boolean  @default(false)
+}
+
+model artifacts {
+  id                 Int     @id @default(autoincrement())
+  public_id          String  @unique
+  project_id         Int
+  scope_kind         String
+  scope_id           Int
+  kind               String
+  title              String
+  current_version_no Int     @default(0)
+  versions           artifact_versions[]
+}
+
+model artifact_versions {
+  id           Int       @id @default(autoincrement())
+  artifact_id  Int
+  artifact     artifacts @relation(fields: [artifact_id], references: [id], onDelete: Cascade)
+  version_no   Int
+  content_md   String?
+  content_json Json?
+  author_type  String
+  author_ref   String
+  notes        String?
+  created_at   DateTime  @default(now())
+}
+
+model story_approvals {
+  id              Int     @id @default(autoincrement())
+  story_public_id String
+  stage           String
+  decision        String
+  rubric_json     Json
+  notes           String?
+  decided_by      String
+  decided_at      DateTime @default(now())
+}
+
+model story_pull_requests {
+  id          Int     @id @default(autoincrement())
+  story_id    Int
+  provider    String
+  repo        String
+  pr_number   Int
+  branch      String
+  status      String
+  url         String
+  head_sha    String?
+  base_branch String   @default("main")
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now())
+}
+
+model subagent_index {
+  id         Int     @id @default(autoincrement())
+  project_id Int
+  name       String
+  file_path  String
+  sha256     String
+  enabled    Boolean @default(true)
+}
+
+model subagent_policy {
+  id                      Int     @id @default(autoincrement())
+  project_id              Int
+  agent_name              String
+  max_tokens_per_run      Int?
+  allowed_tools           String?
+  may_bypass_permissions  Boolean @default(false)
+}

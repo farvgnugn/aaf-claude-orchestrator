@@ -1,0 +1,7 @@
+FROM node:20-bullseye
+RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates openssh-client  && rm -rf /var/lib/apt/lists/*
+# Create non-root user
+RUN useradd -ms /bin/bash sandbox && mkdir -p /workspace && chown -R sandbox:sandbox /workspace
+USER sandbox
+WORKDIR /workspace
+# No CMD; worker will run ephemeral commands
