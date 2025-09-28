@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "artifact_id": 1,
+    "version_no": 1,
+    "content_md": "# E-commerce Platform PRD v1\n\n## Overview\nBuilding a modern e-commerce platform...",
+    "author_type": "user",
+    "author_ref": "user:product-manager",
+    "notes": "Initial requirements draft",
+    "created_at": "2024-01-15T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "artifact_id": 1,
+    "version_no": 2,
+    "content_md": "# E-commerce Platform PRD v2\n\n## Overview\nBuilding a modern e-commerce platform with enhanced security...",
+    "author_type": "subagent",
+    "author_ref": "subagent:analyst",
+    "notes": "Added security requirements",
+    "created_at": "2024-01-16T14:30:00Z"
+  },
+  {
+    "id": 3,
+    "artifact_id": 1,
+    "version_no": 3,
+    "content_md": "# E-commerce Platform PRD v3\n\n## Overview\nBuilding a modern e-commerce platform with enhanced security and mobile support...",
+    "author_type": "user",
+    "author_ref": "user:product-manager",
+    "notes": "Added mobile requirements after stakeholder review",
+    "created_at": "2024-01-18T09:15:00Z"
+  },
+  {
+    "id": 4,
+    "artifact_id": 4,
+    "version_no": 1,
+    "content_md": "# Login Implementation Notes\n\n## Technical Approach\n- Use JWT tokens for session management\n- Implement OAuth2 for social login...",
+    "author_type": "subagent",
+    "author_ref": "subagent:developer",
+    "notes": "Initial implementation plan",
+    "created_at": "2024-01-20T11:00:00Z"
+  }
+]
