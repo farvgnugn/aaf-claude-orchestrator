@@ -1,15 +1,39 @@
-generator client { provider = "prisma-client-js" }
-datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
 
 model projects {
   id                  Int       @id @default(autoincrement())
   public_id           String    @unique
   name                String
+
+  // Repository Connection
   repo_provider       String?
   repo_url            String?
+  repo_owner          String?
+  repo_name           String?
   repo_default_branch String    @default("main")
   workspace_root      String?
   repo_ready          Boolean   @default(false)
+
+  // GitHub Integration (2025 Best Practice)
+  github_app_installation_id BigInt?
+  github_installation         github_installations? @relation("GitHubInstallationProjects", fields: [github_app_installation_id], references: [installation_id])
+  github_webhook_secret       String?
+
+  // Legacy support (for existing PATs during migration)
+  github_token_encrypted      String?
+  github_token_expires_at     DateTime?
+
+  // Metadata
+  created_at          DateTime  @default(now())
+  updated_at          DateTime  @updatedAt
+
   epics               epics[]
 }
 
@@ -102,4 +126,17 @@ model subagent_policy {
   max_tokens_per_run     Int?
   allowed_tools          String?
   may_bypass_permissions Boolean  @default(false)
+}
+
+model github_installations {
+  id              Int      @id @default(autoincrement())
+  installation_id BigInt   @unique
+  account_login   String
+  account_type    String   // "User" or "Organization"
+  permissions     Json
+  events          Json
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  projects        projects[] @relation("GitHubInstallationProjects")
 }

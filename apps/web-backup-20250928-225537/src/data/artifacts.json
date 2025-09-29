@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "public_id": "artifact-001-uuid",
+    "project_id": 1,
+    "scope_kind": "PROJECT",
+    "scope_id": 1,
+    "kind": "PRD",
+    "title": "E-commerce Platform Requirements",
+    "current_version_no": 3,
+    "description": "Comprehensive product requirements document defining the scope, features, and technical requirements for the e-commerce platform",
+    "tags": ["requirements", "product", "core"]
+  },
+  {
+    "id": 2,
+    "public_id": "artifact-002-uuid",
+    "project_id": 1,
+    "scope_kind": "PROJECT",
+    "scope_id": 1,
+    "kind": "ARCH_DOC",
+    "title": "System Architecture Overview",
+    "current_version_no": 2,
+    "description": "High-level system architecture document outlining the technical infrastructure, data flow, and integration patterns",
+    "tags": ["architecture", "technical", "infrastructure"]
+  },
+  {
+    "id": 3,
+    "public_id": "artifact-003-uuid",
+    "project_id": 1,
+    "scope_kind": "EPIC",
+    "scope_id": 1,
+    "kind": "UI_SPEC",
+    "title": "Authentication UI Specifications",
+    "current_version_no": 1,
+    "description": "Detailed user interface specifications for the authentication system including wireframes, user flows, and design patterns",
+    "tags": ["ui", "design", "authentication"]
+  },
+  {
+    "id": 4,
+    "public_id": "artifact-004-uuid",
+    "project_id": 1,
+    "scope_kind": "STORY",
+    "scope_id": 2,
+    "kind": "DEV_NOTES",
+    "title": "Login Implementation Notes",
+    "current_version_no": 4,
+    "description": "Technical implementation notes for the login functionality including code patterns, security considerations, and testing approach",
+    "tags": ["development", "implementation", "security"]
+  },
+  {
+    "id": 5,
+    "public_id": "artifact-005-uuid",
+    "project_id": 2,
+    "scope_kind": "PROJECT",
+    "scope_id": 2,
+    "kind": "PRD",
+    "title": "Analytics Dashboard Requirements",
+    "current_version_no": 1,
+    "description": "Product requirements for the analytics dashboard including user personas, feature specifications, and success metrics",
+    "tags": ["requirements", "analytics", "dashboard"]
+  },
+  {
+    "id": 6,
+    "public_id": "artifact-006-uuid",
+    "project_id": 1,
+    "scope_kind": "STORY",
+    "scope_id": 7,
+    "kind": "PR_DETAILS",
+    "title": "Checkout Payment Integration PR",
+    "current_version_no": 2,
+    "description": "Pull request details and metadata for the checkout payment integration including code changes, test results, and review comments",
+    "tags": ["pull-request", "payment", "integration"]
+  },
+  {
+    "id": 7,
+    "public_id": "artifact-007-uuid",
+    "project_id": 1,
+    "scope_kind": "EPIC",
+    "scope_id": 2,
+    "kind": "EPIC_SUMMARY",
+    "title": "Product Catalog Epic Overview",
+    "current_version_no": 1,
+    "description": "Epic summary document outlining the goals, scope, and acceptance criteria for the product catalog management epic",
+    "tags": ["epic", "catalog", "summary"]
+  },
+  {
+    "id": 8,
+    "public_id": "artifact-008-uuid",
+    "project_id": 3,
+    "scope_kind": "PROJECT",
+    "scope_id": 3,
+    "kind": "TECH_SPEC",
+    "title": "Mobile Banking Technical Specifications",
+    "current_version_no": 2,
+    "description": "Technical specifications for the mobile banking application including security protocols, API design, and performance requirements",
+    "tags": ["technical", "mobile", "banking", "security"]
+  },
+  {
+    "id": 9,
+    "public_id": "artifact-009-uuid",
+    "project_id": 1,
+    "scope_kind": "STORY",
+    "scope_id": 4,
+    "kind": "QC_NOTES",
+    "title": "Product Catalog QC Testing Notes",
+    "current_version_no": 1,
+    "description": "Quality control testing notes for the product catalog admin functionality including test cases, bug reports, and validation results",
+    "tags": ["testing", "quality", "catalog"]
+  }
+]

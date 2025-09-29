@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "project_id": 1,
+    "name": "product-owner",
+    "file_path": "/workspace/ecommerce-platform/.claude/agents/product-owner.md",
+    "sha256": "a1b2c3d4e5f6789012345678901234567890abcdef",
+    "enabled": true,
+    "max_tokens_per_run": 4000,
+    "allowed_tools": ["api", "docs", "analysis"],
+    "may_bypass_permissions": false
+  },
+  {
+    "id": 2,
+    "project_id": 1,
+    "name": "senior-developer",
+    "file_path": "/workspace/ecommerce-platform/.claude/agents/senior-developer.md",
+    "sha256": "b2c3d4e5f6789012345678901234567890abcdef01",
+    "enabled": true,
+    "max_tokens_per_run": 8000,
+    "allowed_tools": ["fs", "git", "shell", "api", "test"],
+    "may_bypass_permissions": true
+  },
+  {
+    "id": 3,
+    "project_id": 1,
+    "name": "ui-ux-designer",
+    "file_path": "/workspace/ecommerce-platform/.claude/agents/ui-ux-designer.md",
+    "sha256": "c3d4e5f6789012345678901234567890abcdef012",
+    "enabled": true,
+    "max_tokens_per_run": 3000,
+    "allowed_tools": ["design", "figma", "docs"],
+    "may_bypass_permissions": false
+  },
+  {
+    "id": 4,
+    "project_id": 1,
+    "name": "qa-engineer",
+    "file_path": "/workspace/ecommerce-platform/.claude/agents/qa-engineer.md",
+    "sha256": "d4e5f6789012345678901234567890abcdef0123",
+    "enabled": false,
+    "max_tokens_per_run": 2500,
+    "allowed_tools": ["test", "api", "browser"],
+    "may_bypass_permissions": false
+  },
+  {
+    "id": 5,
+    "project_id": 2,
+    "name": "data-analyst",
+    "file_path": "/workspace/analytics-dashboard/.claude/agents/data-analyst.md",
+    "sha256": "e5f6789012345678901234567890abcdef01234",
+    "enabled": true,
+    "max_tokens_per_run": 6000,
+    "allowed_tools": ["sql", "python", "api", "charts"],
+    "may_bypass_permissions": false
+  },
+  {
+    "id": 6,
+    "project_id": 3,
+    "name": "security-specialist",
+    "file_path": "/workspace/mobile-banking/.claude/agents/security-specialist.md",
+    "sha256": "f6789012345678901234567890abcdef012345",
+    "enabled": true,
+    "max_tokens_per_run": 5000,
+    "allowed_tools": ["security", "audit", "compliance"],
+    "may_bypass_permissions": true
+  }
+]

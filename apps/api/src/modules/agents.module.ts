@@ -1,11 +1,9 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { AgentsIndex } from '../entities/agents-index.entity';
-import { AgentsPolicy } from '../entities/agents-policy.entity';
 import { AgentsController } from '../routes/agents.controller';
+import { PrismaService } from '../prisma.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([AgentsIndex, AgentsPolicy])],
   controllers: [AgentsController],
+  providers: [PrismaService],
 })
 export class AgentsModule {}

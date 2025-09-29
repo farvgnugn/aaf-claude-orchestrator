@@ -1,11 +1,13 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const core_1 = require("@nestjs/core");
+const app_module_1 = require("./app.module");
+const common_1 = require("@nestjs/common");
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule, { cors: true });
-    app.useGlobalPipes(new ValidationPipe({ transform: true }));
+    const app = await core_1.NestFactory.create(app_module_1.AppModule, { cors: true });
+    app.useGlobalPipes(new common_1.ValidationPipe({ transform: true }));
     await app.listen(4000);
-    console.log('API listening on http://localhost:4000');
+    console.log('API on http://localhost:4000');
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

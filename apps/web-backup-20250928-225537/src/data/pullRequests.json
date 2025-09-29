@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "story_id": 2,
+    "provider": "github",
+    "repo": "acme/ecommerce-platform",
+    "pr_number": 142,
+    "status": "OPEN",
+    "url": "https://github.com/acme/ecommerce-platform/pull/142",
+    "branch": "feat/login-2fa-support",
+    "head_sha": "a1b2c3d4e5f6789012345678901234567890abcd",
+    "base_branch": "main"
+  },
+  {
+    "id": 2,
+    "story_id": 3,
+    "provider": "github",
+    "repo": "acme/ecommerce-platform",
+    "pr_number": 138,
+    "status": "MERGED",
+    "url": "https://github.com/acme/ecommerce-platform/pull/138",
+    "branch": "feat/password-reset",
+    "head_sha": "b2c3d4e5f6789012345678901234567890abcdef",
+    "base_branch": "main"
+  },
+  {
+    "id": 3,
+    "story_id": 6,
+    "provider": "github",
+    "repo": "acme/ecommerce-platform",
+    "pr_number": 135,
+    "status": "MERGED",
+    "url": "https://github.com/acme/ecommerce-platform/pull/135",
+    "branch": "feat/shopping-cart",
+    "head_sha": "c3d4e5f6789012345678901234567890abcdef01",
+    "base_branch": "main"
+  },
+  {
+    "id": 4,
+    "story_id": 7,
+    "provider": "github",
+    "repo": "acme/ecommerce-platform",
+    "pr_number": 140,
+    "status": "MERGED",
+    "url": "https://github.com/acme/ecommerce-platform/pull/140",
+    "branch": "feat/checkout-payment",
+    "head_sha": "d4e5f6789012345678901234567890abcdef012",
+    "base_branch": "main"
+  },
+  {
+    "id": 5,
+    "story_id": 9,
+    "provider": "gitlab",
+    "repo": "fintech/mobile-banking",
+    "pr_number": 23,
+    "status": "OPEN",
+    "url": "https://gitlab.com/fintech/mobile-banking/-/merge_requests/23",
+    "branch": "feat/account-balance-view",
+    "head_sha": "e5f6789012345678901234567890abcdef0123",
+    "base_branch": "develop"
+  }
+]

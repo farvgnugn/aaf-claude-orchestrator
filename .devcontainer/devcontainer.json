@@ -1,0 +1,68 @@
+{
+  "name": "Claude Orchestrator DevContainer",
+  "dockerComposeFile": "../docker-compose.devcontainer.yml",
+  "service": "api",
+  "workspaceFolder": "/app",
+  "shutdownAction": "stopCompose",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "username": "vscode",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest",
+      "ppa": true
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.vscode-json"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  },
+  "forwardPorts": [4000, 5433, 6380],
+  "portsAttributes": {
+    "4000": {
+      "label": "API Server",
+      "onAutoForward": "notify"
+    },
+    "5433": {
+      "label": "PostgreSQL Database",
+      "onAutoForward": "silent"
+    },
+    "6380": {
+      "label": "Redis Cache",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code",
+  "remoteUser": "vscode",
+  "containerUser": "vscode",
+  "updateRemoteUserUID": true,
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+    "source=${localWorkspaceFolder},target=/app,type=bind,consistency=delegated"
+  ],
+  "runArgs": [
+    "--privileged",
+    "--network=host"
+  ]
+}

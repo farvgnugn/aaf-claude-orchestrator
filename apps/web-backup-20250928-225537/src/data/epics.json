@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "public_id": "epic-001-uuid",
+    "project_id": 1,
+    "title": "User Authentication & Authorization",
+    "status": "IN_PROGRESS",
+    "description": "Implement secure user authentication system with multi-factor authentication, role-based access control, and session management",
+    "priority": "HIGH",
+    "start_date": "2024-01-15",
+    "target_date": "2024-02-28"
+  },
+  {
+    "id": 2,
+    "public_id": "epic-002-uuid",
+    "project_id": 1,
+    "title": "Product Catalog Management",
+    "status": "PLANNING",
+    "description": "Build comprehensive product catalog with search, filtering, categorization, and inventory management capabilities",
+    "priority": "HIGH",
+    "start_date": "2024-02-01",
+    "target_date": "2024-03-15"
+  },
+  {
+    "id": 3,
+    "public_id": "epic-003-uuid",
+    "project_id": 1,
+    "title": "Shopping Cart & Checkout",
+    "status": "DONE",
+    "description": "Complete shopping cart functionality with secure checkout process, payment integration, and order confirmation",
+    "priority": "CRITICAL",
+    "start_date": "2024-01-01",
+    "target_date": "2024-01-31"
+  },
+  {
+    "id": 4,
+    "public_id": "epic-004-uuid",
+    "project_id": 2,
+    "title": "Real-time Analytics Engine",
+    "status": "PLANNING",
+    "description": "Develop real-time data processing and analytics engine with customizable dashboards and reporting",
+    "priority": "MEDIUM",
+    "start_date": "2024-02-15",
+    "target_date": "2024-04-30"
+  },
+  {
+    "id": 5,
+    "public_id": "epic-005-uuid",
+    "project_id": 3,
+    "title": "Account Management",
+    "status": "IN_PROGRESS",
+    "description": "Core banking account management features including balance inquiry, transaction history, and account settings",
+    "priority": "CRITICAL",
+    "start_date": "2024-01-10",
+    "target_date": "2024-03-01"
+  },
+  {
+    "id": 6,
+    "public_id": "epic-006-uuid",
+    "project_id": 3,
+    "title": "Mobile Payment System",
+    "status": "PLANNING",
+    "description": "Secure mobile payment processing with biometric authentication and fraud detection",
+    "priority": "HIGH",
+    "start_date": "2024-03-01",
+    "target_date": "2024-05-15"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "public_id": "proj-001-uuid",
+    "name": "E-commerce Platform",
+    "repo_ready": true,
+    "repo_provider": "github",
+    "repo_url": "https://github.com/acme/ecommerce-platform",
+    "repo_default_branch": "main",
+    "workspace_root": "/workspace/ecommerce-platform"
+  },
+  {
+    "id": 2,
+    "public_id": "proj-002-uuid",
+    "name": "Customer Analytics Dashboard",
+    "repo_ready": false,
+    "repo_provider": "github",
+    "repo_url": "https://github.com/acme/analytics-dashboard",
+    "repo_default_branch": "main",
+    "workspace_root": "/workspace/analytics-dashboard"
+  },
+  {
+    "id": 3,
+    "public_id": "proj-003-uuid",
+    "name": "Mobile Banking App",
+    "repo_ready": true,
+    "repo_provider": "gitlab",
+    "repo_url": "https://gitlab.com/fintech/mobile-banking",
+    "repo_default_branch": "develop",
+    "workspace_root": "/workspace/mobile-banking"
+  },
+  {
+    "id": 4,
+    "public_id": "proj-004-uuid",
+    "name": "AI Content Generator",
+    "repo_ready": false,
+    "repo_provider": null,
+    "repo_url": null,
+    "repo_default_branch": "main",
+    "workspace_root": null
+  }
+]

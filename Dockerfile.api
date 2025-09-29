@@ -1,4 +1,8 @@
 FROM node:20-alpine
+
+# Install OpenSSL and required libraries for Prisma compatibility
+RUN apk add --no-cache openssl openssl-dev libc6-compat
+
 WORKDIR /app
 COPY package.json pnpm-workspace.yaml prisma ./
 RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
@@ -6,6 +10,7 @@ RUN pnpm i
 RUN pnpm prisma:generate
 COPY apps/api ./apps/api
 COPY packages ./packages
-EXPOSE 4000
 WORKDIR /app/apps/api
+RUN pnpm install
+EXPOSE 4000
 CMD ["pnpm","dev"]

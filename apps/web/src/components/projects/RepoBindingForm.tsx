@@ -1,30 +1,29 @@
 import React, { useState } from 'react';
-import { X, GitBranch, Save } from 'lucide-react';
-import { Project } from '../../types';
+import { X, GitBranch, Save, Key, Shield } from 'lucide-react';
+import { Project, RepoBindingData } from '../../types';
 
 interface RepoBindingFormProps {
   project: Project;
-  onSubmit: (data: {
-    repoProvider: string;
-    repoUrl: string;
-    defaultBranch: string;
-    workspaceRoot: string;
-  }) => void;
+  onSubmit: (data: RepoBindingData) => void;
   onCancel: () => void;
   loading?: boolean;
 }
 
-const RepoBindingForm: React.FC<RepoBindingFormProps> = ({ 
-  project, 
-  onSubmit, 
-  onCancel, 
-  loading 
+const RepoBindingForm: React.FC<RepoBindingFormProps> = ({
+  project,
+  onSubmit,
+  onCancel,
+  loading
 }) => {
   const [formData, setFormData] = useState({
     repoProvider: project.repo_provider || 'github',
     repoUrl: project.repo_url || '',
     defaultBranch: project.repo_default_branch || 'main',
     workspaceRoot: project.workspace_root || '',
+    githubWebhookSecret: project.github_webhook_secret || '',
+    githubAppInstallationId: project.github_app_installation_id?.toString() || '',
+    githubTokenEncrypted: project.github_token_encrypted || '',
+    githubTokenExpiresAt: project.github_token_expires_at || '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -108,6 +107,77 @@ const RepoBindingForm: React.FC<RepoBindingFormProps> = ({
               placeholder="/path/to/workspace"
               required
             />
+          </div>
+
+          {/* GitHub Integration Settings */}
+          <div className="border-t pt-4 mt-4">
+            <h3 className="text-md font-medium text-gray-900 mb-4 flex items-center">
+              <Shield className="h-4 w-4 mr-2 text-green-600" />
+              GitHub Integration
+            </h3>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Webhook Secret
+                </label>
+                <input
+                  type="password"
+                  value={formData.githubWebhookSecret}
+                  onChange={(e) => handleChange('githubWebhookSecret', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Webhook secret for GitHub events"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  GitHub App Installation ID
+                </label>
+                <input
+                  type="text"
+                  value={formData.githubAppInstallationId}
+                  onChange={(e) => handleChange('githubAppInstallationId', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Installation ID for GitHub App (recommended)"
+                />
+                <p className="mt-1 text-xs text-gray-500">
+                  Preferred method for GitHub integration. Requires GitHub App setup.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+                  <Key className="h-4 w-4 mr-1" />
+                  Personal Access Token (Legacy)
+                </label>
+                <input
+                  type="password"
+                  value={formData.githubTokenEncrypted}
+                  onChange={(e) => handleChange('githubTokenEncrypted', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Fine-grained Personal Access Token"
+                />
+                <p className="mt-1 text-xs text-gray-500">
+                  Legacy method. Use GitHub App installation when possible.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Token Expiration Date
+                </label>
+                <input
+                  type="datetime-local"
+                  value={formData.githubTokenExpiresAt}
+                  onChange={(e) => handleChange('githubTokenExpiresAt', e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <p className="mt-1 text-xs text-gray-500">
+                  Optional: Set token expiration for automatic renewal alerts.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="flex justify-end space-x-3 pt-4">

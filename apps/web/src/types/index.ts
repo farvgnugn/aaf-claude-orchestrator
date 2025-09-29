@@ -3,10 +3,24 @@ export interface Project {
   public_id: string;
   name: string;
   repo_ready: boolean;
+
+  // Repository Connection
   repo_provider?: string;
   repo_url?: string;
+  repo_owner?: string;
+  repo_name?: string;
   repo_default_branch: string;
   workspace_root?: string;
+
+  // GitHub Integration
+  github_app_installation_id?: bigint;
+  github_webhook_secret?: string;
+  github_token_encrypted?: string;
+  github_token_expires_at?: string;
+
+  // Metadata
+  created_at: string;
+  updated_at: string;
 }
 
 export interface Epic {
@@ -99,4 +113,27 @@ export interface POApproval {
     rollbackPlan: boolean;
   };
   decided_by: string;
+}
+
+export interface GitHubInstallation {
+  id: number;
+  installation_id: bigint;
+  account_login: string;
+  account_type: 'User' | 'Organization';
+  permissions: Record<string, any>;
+  events: string[];
+  created_at: string;
+  updated_at: string;
+  projects?: Project[];
+}
+
+export interface RepoBindingData {
+  repoProvider: string;
+  repoUrl: string;
+  defaultBranch?: string;
+  workspaceRoot?: string;
+  githubWebhookSecret?: string;
+  githubAppInstallationId?: string;
+  githubTokenEncrypted?: string;
+  githubTokenExpiresAt?: string;
 }

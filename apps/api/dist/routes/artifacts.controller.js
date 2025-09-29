@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,47 +11,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { StoryPR } from '../entities/story-pr.entity';
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ArtifactsController = void 0;
+const common_1 = require("@nestjs/common");
+const prisma_service_1 = require("../prisma.service");
 let ArtifactsController = class ArtifactsController {
-    constructor(prRepo) {
-        this.prRepo = prRepo;
+    constructor(prisma) {
+        this.prisma = prisma;
     }
     async ingest(b) {
-        // MVP: simple upsert
-        let pr = await this.prRepo.findOne({ where: { provider: b.provider, repo: b.repo, pr_number: b.pr_number } });
-        if (!pr)
-            pr = this.prRepo.create(b);
+        const existing = await this.prisma.story_pull_requests.findFirst({ where: { provider: b.provider, repo: b.repo, pr_number: b.pr_number } });
+        if (existing)
+            await this.prisma.story_pull_requests.update({ where: { id: existing.id }, data: b });
         else
-            Object.assign(pr, b);
-        await this.prRepo.save(pr);
+            await this.prisma.story_pull_requests.create({ data: b });
         return { ok: true };
     }
-    async listByStory(storyId) {
-        return this.prRepo.find({ where: { story_id: Number(storyId) } });
+    listByStory(storyId) {
+        return this.prisma.story_pull_requests.findMany({ where: { story_id: Number(storyId) } });
     }
 };
+exports.ArtifactsController = ArtifactsController;
 __decorate([
-    Post('ingest'),
-    __param(0, Body()),
+    (0, common_1.Post)('ingest'),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ArtifactsController.prototype, "ingest", null);
 __decorate([
-    Get('story/:storyId'),
-    __param(0, Param('storyId')),
+    (0, common_1.Get)('story/:storyId'),
+    __param(0, (0, common_1.Param)('storyId')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
 ], ArtifactsController.prototype, "listByStory", null);
-ArtifactsController = __decorate([
-    Controller('pr'),
-    __param(0, InjectRepository(StoryPR)),
-    __metadata("design:paramtypes", [typeof (_a = typeof Repository !== "undefined" && Repository) === "function" ? _a : Object])
+exports.ArtifactsController = ArtifactsController = __decorate([
+    (0, common_1.Controller)('pr'),
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
 ], ArtifactsController);
-export { ArtifactsController };
 //# sourceMappingURL=artifacts.controller.js.map

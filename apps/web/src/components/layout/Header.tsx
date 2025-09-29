@@ -1,19 +1,22 @@
-import React from 'react';
-import { Settings, ArrowLeft, Zap } from 'lucide-react';
+import React, { useState } from 'react';
+import { Settings, ArrowLeft, Zap, Github, ChevronDown } from 'lucide-react';
 
 interface HeaderProps {
   currentView: string;
   onViewChange: (view: string) => void;
   showProjectNav?: boolean;
   onBackToProjects?: () => void;
+  onGitHubSettings?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ 
-  currentView, 
-  onViewChange, 
+const Header: React.FC<HeaderProps> = ({
+  currentView,
+  onViewChange,
   showProjectNav = false,
-  onBackToProjects 
+  onBackToProjects,
+  onGitHubSettings
 }) => {
+  const [showSettingsMenu, setShowSettingsMenu] = useState(false);
   return (
     <header className="header-gradient shadow-xl border-b border-dark-700 backdrop-blur-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,7 +44,36 @@ const Header: React.FC<HeaderProps> = ({
               )}
             </div>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center space-x-4">
+            {/* Settings Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setShowSettingsMenu(!showSettingsMenu)}
+                className="flex items-center space-x-2 px-3 py-2 text-dark-300 hover:text-white bg-dark-800 hover:bg-dark-700 border border-dark-600 rounded-lg transition-colors"
+              >
+                <Settings className="h-4 w-4" />
+                <span className="text-sm">Settings</span>
+                <ChevronDown className={`h-3 w-3 transition-transform ${showSettingsMenu ? 'rotate-180' : ''}`} />
+              </button>
+
+              {showSettingsMenu && (
+                <div className="absolute right-0 mt-2 w-48 bg-dark-800 border border-dark-600 rounded-lg shadow-xl z-50">
+                  <div className="py-1">
+                    <button
+                      onClick={() => {
+                        onGitHubSettings?.();
+                        setShowSettingsMenu(false);
+                      }}
+                      className="flex items-center w-full px-4 py-2 text-sm text-dark-300 hover:text-white hover:bg-dark-700 transition-colors"
+                    >
+                      <Github className="h-4 w-4 mr-2" />
+                      GitHub Installations
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <div className="h-10 w-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
               <span className="text-sm font-bold text-white">AI</span>
             </div>

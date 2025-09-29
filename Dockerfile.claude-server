@@ -1,0 +1,26 @@
+FROM node:20-alpine
+
+# Install required dependencies for Claude Code
+RUN apk add --no-cache \
+    curl \
+    git \
+    bash \
+    openssl \
+    libc6-compat
+
+# Install Claude Code
+RUN npm install -g @anthropic/claude-code@latest
+
+# Create app directory
+WORKDIR /app
+
+# Copy the server script and package.json
+COPY claude-server.js ./
+COPY claude-package.json package.json
+
+# Install dependencies
+RUN npm install
+
+EXPOSE 3001
+
+CMD ["node", "claude-server.js"]

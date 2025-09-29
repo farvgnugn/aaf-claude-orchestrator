@@ -50,12 +50,17 @@ const ProjectsView: React.FC<ProjectsViewProps> = ({ onSelectProject }) => {
   const getProjectEpicCount = (projectId: number) => {
     return epics.filter(epic => epic.project_id === projectId).length;
   };
-  const handleCreateProject = async (name: string) => {
+  const handleCreateProject = async (name: string, setupGitHub?: boolean) => {
     try {
       setActionLoading(0);
       const newProject = await apiService.createProject(name);
       setProjects([...projects, newProject]);
       setShowProjectForm(false);
+
+      // If GitHub setup was requested, immediately open the repo binding form
+      if (setupGitHub) {
+        setShowRepoForm(newProject);
+      }
     } catch (error) {
       console.error('Failed to create project:', error);
     } finally {

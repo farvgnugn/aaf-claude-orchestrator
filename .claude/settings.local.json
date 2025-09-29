@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm dev:*)",
+      "Bash(pnpm install:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(chmod:*)",
+      "Bash(docker-compose:*)",
+      "Bash(git checkout:*)",
+      "Bash(pnpm prisma:*)",
+      "Bash(pnpm prisma:push:*)",
+      "Bash(npx prisma:*)",
+      "Bash(npm install:*)",
+      "Bash(DATABASE_URL=\"postgres://postgres:postgres@localhost:5433/orchestrator\" prisma db push)",
+      "Bash(curl:*)",
+      "Bash(findstr:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
