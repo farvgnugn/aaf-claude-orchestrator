@@ -1,5 +1,5 @@
 {
-  "name": "claude-orchestrator-mvp",
+  "name": "claude-orchestrator-prisma-only",
   "private": true,
   "packageManager": "pnpm@9.0.0",
   "scripts": {
@@ -7,10 +7,10 @@
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push"
   },
-  "devDependencies": {
-    "prisma": "^5.18.0"
-  },
   "dependencies": {
     "@prisma/client": "^5.18.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.18.0"
   }
 }

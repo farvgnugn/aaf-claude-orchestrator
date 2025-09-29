@@ -1,12 +1,11 @@
 FROM node:20-alpine
 WORKDIR /app
-COPY package.json pnpm-workspace.yaml prisma ./ 
+COPY package.json pnpm-workspace.yaml prisma ./
 RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
 RUN pnpm i
 RUN pnpm prisma:generate
 COPY apps/api ./apps/api
 COPY packages ./packages
-COPY .claude ./ ./.claude
 EXPOSE 4000
 WORKDIR /app/apps/api
 CMD ["pnpm","dev"]
